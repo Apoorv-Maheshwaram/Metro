@@ -42,13 +42,11 @@ class Metro
 						break;
 					}
 				}
-
-				break;
 						
 			}
 			case 2:
 			{
-				Book_Ticket();
+				System.out.println("Choose");
 				break;
 			}
 
@@ -91,7 +89,6 @@ static void login()
 		else
 		{
 			System.out.println("Invalid Number");
-			//System.out.println("Please Enter 10 digit valid number");
 			login();
 		}
 	}
@@ -156,60 +153,7 @@ static int Card_Recharge(int amount)
 
 	}
 
-
-static void Book_Ticket()
-	{
-		System.out.println("Choose Your Journey Stations");
-
-		for(int i=0;i<Stations.redline.length;i++)
-		{
-			System.out.println(i+1+". "+Stations.redline[i]);
-		}
-		for(int i=0;i<Stations.blueline.length;i++)
-		{
-			System.out.println(Stations.redline.length+i+1+". "+Stations.blueline[i]);
-		}
-		
-		System.out.println("Choose Starting Point:");
-		int start=in.nextInt();
-		System.out.println("Choose Destination Point:");
-		int end=in.nextInt();
-
-		if(start<=Stations.redline.length)
-		{
-
-		}
-		else
-		{
-			
-		}
-
-	}
-
-
 }
-
-class Login
-{
-
-	private String MobileNumber;
-	
-	void set_MobileNumber(String MobileNumber)
-	{
-		this.MobileNumber=MobileNumber;
-	}
-
-
-}
-class Stations
-{
-	static String [] redline={"Parade_Ground","Begumpet","Ameerpet","Yusafguda","Jubli_Hills","Check_Post","Madhapur","Durgam_Cheruvu","Hitech_City"};
-
-	static String[] blueline={"MG_Bus_stand","Nampally","Assembly","Khairatabad","Panjagutta","Ameerpet","Moosapet","KPHB Colony","Miyapur"};
-
-
-}
-
 interface bank
 {
 	Scanner sc=new Scanner(System.in);
@@ -238,4 +182,24 @@ class phonepay extends Metro implements bank
 		System.out.println("Total available balance: ");
 		System.out.println(Card_Recharge(money));
 	}	
+} 		
+class Login
+{
+
+	private String MobileNumber;
+	
+	void set_MobileNumber(String MobileNumber)
+	{
+		this.MobileNumber=MobileNumber;
+	}
+
+
 } 
+class Stations
+{
+	String [] redline={};
+
+
+
+}
+
