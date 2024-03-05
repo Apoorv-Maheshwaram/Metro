@@ -170,26 +170,91 @@ static void Book_Ticket()
 			System.out.println(Stations.redline.length+i+1+". "+Stations.blueline[i]);
 		}
 		
-		System.out.println("Choose Starting Point:");
-		int start=in.nextInt();
-		System.out.println("Choose Destination Point:");
-		int end=in.nextInt();
 
-		if(start<=Stations.redline.length)
+			System.out.println("Choose Starting Point:");
+			int start=in.nextInt();
+			System.out.println("Choose Destination Point:");
+			int end=in.nextInt();
+			
+		int redline_midindex=3;
+		int blueline_midindex=15;
+
+		int numofstations=0;
+		if(start<=9)
 		{
-
+			if(end<=9)
+			{
+				numofstations=Math.abs(start-end);
+			}
+			else
+			{
+				// int half_staions=Math.abs(start-redline_midindex);
+				// int other_stations=Math.abs(end-blueline_midindex);
+				numofstations=Math.abs(start-redline_midindex)+Math.abs(end-blueline_midindex);
+			}
 		}
 		else
 		{
-			
+			if(end>=10)
+			{
+				numofstations=Math.abs(start-end);
+			}
+			else
+			{
+				numofstations=Math.abs(start-blueline_midindex)+Math.abs(end-redline_midindex);
+			}
 		}
+		System.out.println(numofstations);
 
+		int total_fare=fare(numofstations);
+		System.out.println(total_fare);
 	}
+		
+	
 
 
+	static int fare(int stations)
+	{
+		// int fare=0;
+		// if(start>=1 && start<=5 || end>=1 || end<=5 || start>=10 && start<=14 || end>=10 && end<=14)
+		// {
+		// 	if(start>=1 && start<=5 || start>=10 && start<=14)
+		// 	{
+		// 		if(start>=1 && start<=5)
+		// 			fare=fare+Math.abs(5-start)*10;
+		// 		else
+		// 			fare=fare+Math.abs(14-start)*10;
+		// 	}
+		// 	else
+		// 	{
+		// 		if(end>=1 || end<=5)
+		// 			fare=fare+Math.abs(5-end)*10;
+		// 		else
+		// 			fare+=Math.abs(14-end)*10;
+		// 	}
+		// }
+		// else if(start>=6 && start<=9 || start>=15 && start<=18 ||end>=6 && end<=9 || end>=15 && end<=18)
+		// {
+		// 	if(start>=6 && start<=9 || start>=15 && start<=18)
+		// 	{
+		// 		if(start>=6 && start<=9)
+		// 		fare+=Math.abs(9-start)*15;
+		// 		else
+		// 		fare+=Math.abs(18-start)*15;
+		// 	}
+		// 	else
+		// 	{
+		// 		if(end>=6 && end<=9)
+		// 			fare+=Math.abs(9-end)*15;
+		// 		else	
+		// 			fare+=Math.abs(18-end)*15;
+		// 		}
+		// }
+		// System.out.println(fare);
+		return 10*stations;	
+	}
 }
-
-class Login
+	class Login
 {
 
 	private String MobileNumber;
