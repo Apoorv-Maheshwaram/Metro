@@ -68,7 +68,7 @@ class Metro {
 			}
 		} else {
 			System.out.println("you have entered invalid input");
-			payment_methods();
+			payment_methods()  ;
 		}
 	}
 
@@ -83,13 +83,13 @@ class Metro {
 			switch (bnks) {
 				case 1: {
 					System.out.println("welcome to SBI");
-					Gpay obj1 = new Gpay();
+					payment_method obj1 = new payment_method();
 					obj1.payments();
 					break;
 				}
 				case 2: {
 					System.out.println("welcome to HDFC");
-					Gpay obj2 = new Gpay();
+					payment_method obj2 = new payment_method();
 					obj2.payments();
 					break;
 				}
@@ -123,12 +123,11 @@ class Metro {
 
 				lg.set_MobileNumber(number);
 				OTP();
-
+ 
 			}
 		} else {
 			System.out.println("Invalid Number");
-			// System.out.println("Please Enter 10 digit valid number");
-			login();
+						login();
 		}
 	}
 
@@ -173,9 +172,11 @@ class Metro {
 	}
 
 	static int Card_Recharge(int amount) {
+		//password obj = new password(in.next());
+		
 		int card = 1000;
 		card += amount;
-
+		
 		return card;
 
 	}
@@ -286,26 +287,89 @@ interface bank {
 	Scanner sc = new Scanner(System.in);
 
 	void payments();
-
+	
 }
 
-class paytm extends Metro implements bank {
-	public void payments() {
-		System.out.println("welcome to paytm");
-		System.out.println("Enter amount to add.");
-		int money = sc.nextInt();
-		System.out.println("Total available balance: ");
-		System.out.println(Card_Recharge(money));
+class payment_method extends Metro implements bank {
+	public void payments() {	
+		System.out.println("Enter your password");
+		password obj = new password(in.next());
+		
 	}
 
 }
-
-class phonepay extends Metro implements bank {
-	public void payments() {
-		System.out.println("welcome to phonepay");
-		System.out.println("Enter amount to add.");
-		int money = sc.nextInt();
-		System.out.println("Total available balance: ");
-		System.out.println(Card_Recharge(money));
+class password extends payment_method 
+{
+	private String pass;
+	static int v=0;
+	String g= "metro";
+	static int n =1;
+	static password obj = new password();
+	password()
+	{
 	}
+	password(String pass1)
+	{
+		if(n==1)
+		{	
+			if(this.g.equals(pass1))
+			{	
+				System.out.println("Enter amount to add.");
+				int money = in.nextInt();
+				System.out.println("Total available balance: ");
+				System.out.println(Card_Recharge(money));
+			}
+			else
+			{
+				System.out.println("you have entered invalid password");
+				v=v+1;
+				if(v%3==0)
+				{
+					n++;
+					System.out.println("you have reached your max attempts");
+					System.out.println("enter your new password");
+					obj.change_pas(sc.next());
+				}
+				payment_method obj = new payment_method();
+				obj.payments();
+			}
+		}
+		else
+		{	
+			if(obj.get_pas().equals(pass1))
+			{	
+				System.out.println("Enter amount to add.");
+				int money = in.nextInt();
+				System.out.println("Total available balance: ");
+				System.out.println(Card_Recharge(money));
+			}
+			else
+			{
+				System.out.println("you have entered invalid password");
+				v=v+1;
+				if(v%3==0)
+				{
+					n++;
+					System.out.println("you have reached your max attempts");
+					System.out.println("enter your new password");
+					obj.change_pas(sc.next());
+				}
+				payment_method obj = new payment_method();
+				obj.payments();
+			}
+
+
+		}	
+			
+	}
+	String get_pas()
+	{
+		return pass;
+	}
+	void change_pas(String pass1)
+	{
+		this.pass = pass1;
+
+	}	
+	
 }
